@@ -1,0 +1,5 @@
+services:
+    twig.extension.truncate_html:
+        class: TangoMan\TruncateHtmlBundle\TwigExtension\TruncateHtmlExtension
+        tags:
+            - { name: twig.extension }
