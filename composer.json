@@ -12,7 +12,7 @@
 			"name": "Fabrice Lazzarotto"
 		}
 	],
-	"type": "library",
+	"type": "symfony-bundle",
 	"keywords": [
 		"TangoMan",
 		"Symfony",
