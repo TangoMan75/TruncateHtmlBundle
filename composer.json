@@ -9,7 +9,8 @@
 			"email": "tangoman@free.fr"
 		},
 		{
-			"name": "Fabrice Lazzarotto"
+			"name": "Fabrice Lazzarotto",
+			"email": "fabrice.lazzarotto@gmail.com"
 		}
 	],
 	"type": "symfony-bundle",
