@@ -3,16 +3,14 @@ Tangoman TruncateHtml Twig Service
 
 **Tangoman TruncateHtml Twig Service** truncates html keeping tags.
 
-
 How to install
 --------------
 
-With composer 
+With composer
 
 ```console
 $ composer require tangoman/truncate-html-bundle
 ```
-
 
 Enable the bundle
 -----------------
@@ -35,7 +33,6 @@ public function registerBundles()
 You don't have to add **TangoMan CallbackBundle** to the `service.yml` of your project.
 **twig.extension.truncate_html** service should load automatically.
 
-
 How to use
 ----------
 
@@ -47,7 +44,6 @@ Inside your views:
     </p>
 ```
 
-
 Note
 ====
 
@@ -56,10 +52,10 @@ If you find any bug please report here : [Issues](https://github.com/TangoMan75/
 License
 =======
 
-Copyrights (c) 2017 Matthias Morin
+Copyright (c) 2018 Matthias Morin
 
-[![License][license-GPL]][license-url]
-Distributed under the GPLv3.0 license.
+[![License][license-MIT]][license-url]
+Distributed under the MIT license.
 
 If you like **TangoMan TruncateHtml** please star!
 And follow me on GitHub: [TangoMan75](https://github.com/TangoMan75)
@@ -67,6 +63,5 @@ And follow me on GitHub: [TangoMan75](https://github.com/TangoMan75)
 
 [tangoman.free.fr](http://tangoman.free.fr)
 
-[license-GPL]: https://img.shields.io/badge/Licence-GPLv3.0-green.svg
 [license-MIT]: https://img.shields.io/badge/Licence-MIT-green.svg
 [license-url]: LICENSE

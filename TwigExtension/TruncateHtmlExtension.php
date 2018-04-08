@@ -1,4 +1,10 @@
 <?php
+/**
+ * Copyright (c) 2018 Matthias Morin <matthias.morin@gmail.com>
+ *
+ * This source file is subject to the MIT license that is bundled
+ * with this source code in the file LICENSE.
+ */
 
 namespace TangoMan\TruncateHtmlBundle\TwigExtension;
 
@@ -12,6 +18,7 @@ use Symfony\Component\Debug\Exception\UndefinedFunctionException;
  */
 class TruncateHtmlExtension extends \Twig_Extension
 {
+
     /**
      * @return string
      */
@@ -25,7 +32,13 @@ class TruncateHtmlExtension extends \Twig_Extension
      */
     public function getFilters()
     {
-        return [new \Twig_SimpleFilter('truncatehtml', [$this, 'truncatehtml'], ['needs_environment' => true])];
+        return [
+            new \Twig_SimpleFilter(
+                'truncatehtml',
+                [$this, 'truncatehtml'],
+                ['needs_environment' => true]
+            ),
+        ];
     }
 
     /**
@@ -36,13 +49,17 @@ class TruncateHtmlExtension extends \Twig_Extension
      *
      * @return string
      */
-    public function truncatehtml(\Twig_Environment $environment, $html, $limit, $endchar = false)
-    {
+    public function truncatehtml(
+        \Twig_Environment $environment,
+        $html,
+        $limit,
+        $endchar = false
+    ) {
         if ($endchar === false) {
             $endchar = html_entity_decode("&hellip;");
         }
         try {
-            if (!is_callable('tidy_repair_string')) {
+            if ( ! is_callable('tidy_repair_string')) {
                 throw new UndefinedFunctionException(
                     'Missing tidy_repair_string function from tidy library.',
                     new \ErrorException()
@@ -52,7 +69,15 @@ class TruncateHtmlExtension extends \Twig_Extension
 
             return $output->cut($endchar);
         } catch (\Exception $e) {
-            return nl2br(twig_truncate_filter($environment, strip_tags($html), $limit, false, $endchar));
+            return nl2br(
+                twig_truncate_filter(
+                    $environment,
+                    strip_tags($html),
+                    $limit,
+                    false,
+                    $endchar
+                )
+            );
         }
     }
 }

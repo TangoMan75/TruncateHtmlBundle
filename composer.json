@@ -1,12 +1,12 @@
 {
 	"name": "tangoman/truncate-html-bundle",
 	"description": "Symfony Truncate Html Twig Extention Bundle",
-	"version": "1.0.0",
-	"license": "GPL-3.0",
+	"version": "1.0.1",
+	"license": "MIT",
 	"authors": [
 		{
 			"name": "Matthias Morin",
-			"email": "tangoman@free.fr"
+			"email": "matthias.morin@gmail.com"
 		},
 		{
 			"name": "Fabrice Lazzarotto",

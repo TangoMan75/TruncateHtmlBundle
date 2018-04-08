@@ -1,4 +1,10 @@
 <?php
+/**
+ * Copyright (c) 2018 Matthias Morin <matthias.morin@gmail.com>
+ *
+ * This source file is subject to the MIT license that is bundled
+ * with this source code in the file LICENSE.
+ */
 
 namespace TangoMan\TruncateHtmlBundle\TwigExtension;
 
@@ -9,6 +15,7 @@ namespace TangoMan\TruncateHtmlBundle\TwigExtension;
  */
 class TruncateHtmlString
 {
+
     /**
      * @var \DOMDocument
      */
@@ -24,7 +31,7 @@ class TruncateHtmlString
     {
         // create dom element using the html string
         $this->tempDiv = new \DomDocument();
-        $string = tidy_repair_string(
+        $string        = tidy_repair_string(
             str_replace(["\r", "\n"], "", html_entity_decode($string)),
             [
                 'output-xml'      => true,
@@ -36,7 +43,7 @@ class TruncateHtmlString
         $this->tempDiv->loadXML('<div>'.$string.'</div>');
         // keep the characters count till now
         $this->charCount = 0;
-        $this->encoding = 'UTF-8';
+        $this->encoding  = 'UTF-8';
         // character limit need to check
         $this->limit = $limit;
     }
@@ -51,7 +58,11 @@ class TruncateHtmlString
         // create empty document to store new html
         $this->newDiv = new \DomDocument();
         // cut the string by parsing through each element
-        $this->searchEnd($this->tempDiv->documentElement, $this->newDiv, $endChar);
+        $this->searchEnd(
+            $this->tempDiv->documentElement,
+            $this->newDiv,
+            $endChar
+        );
         $newhtml = $this->newDiv->saveHTML();
 
         return $newhtml;
@@ -96,9 +107,14 @@ class TruncateHtmlString
             }
 
             // the limit of the char count reached
-            if (mb_strlen($ele->nodeValue, $this->encoding) + $this->charCount >= $this->limit) {
-                $newEle = $this->newDiv->importNode($ele);
-                $newEle->nodeValue = substr($newEle->nodeValue, 0, $this->limit - $this->charCount).$endChar;
+            if (mb_strlen($ele->nodeValue, $this->encoding) + $this->charCount
+                >= $this->limit) {
+                $newEle            = $this->newDiv->importNode($ele);
+                $newEle->nodeValue = substr(
+                                         $newEle->nodeValue,
+                                         0,
+                                         $this->limit - $this->charCount
+                                     ).$endChar;
                 $newParent->appendChild($newEle);
 
                 return true;
